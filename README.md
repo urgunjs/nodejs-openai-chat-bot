@@ -21,4 +21,6 @@ cp .env.example .env
 ```
 
 ### 5. Projeyi çalıştırın.
+```sh
 npm run dev
+```
