@@ -1,0 +1,50 @@
+Chat botun verilen cevaplar üzerine ekleme yaparak devam etmesini istiyoruz. Bu işlem, chat botunuzun konuşma akışını takip edebilmesi ve doğru cevaplar verebilmesi için önemlidir.
+
+OpenAI API'sini kullanarak chat botunuzun verilen cevaplar üzerine ekleme yapmasını sağlayabilirsiniz. Bunun için, API'ye gönderdiğiniz isteklerde bir "context" parametresi kullanarak geçerli konuşma akışını belirtebilirsiniz. Bu parametre, API'ye gönderdiğiniz mesajların anlamını ve ne zaman gönderildiğini belirtir. API, daha önce gönderilen mesajları ve geçerli konuşma akışını dikkate alarak cevaplar verebilir.
+
+Aşağıdaki adımları izleyerek, OpenAI API'sini kullanarak chat botunuzun verilen cevaplar üzerine ekleme yapmasını sağlayabilirsiniz:
+
+1- Chat botunuzun kullanıcıdan aldığı mesajları OpenAI API'sine gönderirken, "context" parametresini kullanarak geçerli konuşma akışını belirtin.
+
+2- API'den cevapları alın ve kullanıcı arayüzünüzde gösterin.
+
+3- Kullanıcının cevabını alın ve API'ye tekrar gönderirken, "context" parametresini güncelleyin ve geçerli konuşma akışını belirtin.
+
+Bu şekilde, chat botunuz OpenAI API'sini kullanarak verilen cevaplar üzerine ekleme yaparak devam edebilir ve doğru cevaplar verebilir.
+
+Örneğin, chat botunuz ile bir kullanıcı arasında şu şekilde bir konuşma olmuş olabilir:
+
+Kullanıcı: "Merhaba, nasılsın?"
+Chat Bot: "Merhaba, ben iyiyim teşekkür ederim. Sen nasılsın?"
+
+Bu konuşma akışını belirtmek için, chat botunuzun API'ye gönderdiği isteklerde "context" parametresini kullanabilirsiniz. Örneğin, chat botunuzun API'ye gönderdiği ilk isteğin "context" parametresi aşağıdaki gibi olabilir:
+
+"context": {
+"previous_messages": [
+{
+"message": "Merhaba, nasılsın?",
+"sender": "user"
+}
+]
+}
+
+Bu parametre, API'ye gönderilen ilk mesajın ("Merhaba, nasılsın?") gönderildiğini ve gönderenin ("user") kullanıcı olduğunu belirtir. API, bu bilgilere göre cevaplar verebilir.
+
+Daha sonra, kullanıcının cevabını alın ve API'ye gönderirken "context" parametresini güncelleyin. Örneğin, chat botunuzun API'ye gönderdiği ikinci isteğin "context" parametresi aşağıdaki gibi olabilir:
+
+"context": {
+"previous_messages": [
+{
+"message": "Merhaba, nasılsın?",
+"sender": "user"
+},
+{
+"message": "Merhaba, ben iyiyim teşekkür ederim. Sen nasılsın?",
+"sender": "bot"
+}
+]
+}
+
+Bu parametre, API'ye gönderilen ikinci mesajın ("Merhaba, ben iyiyim teşekkür ederim. Sen nasılsın?") gönderildiğini ve gönderenin ("bot") chat bot olduğunu belirtir. API, bu bilgilere göre cevaplar verebilir ve chat botunuz ile kullanıcı arasında devam edebilecek bir konuşma akışı oluşturabilir.
+
+Bu şekilde, "context" parametresini kullanarak chat botunuzun verilen cevaplar üzerine ekleme yapmasını sağlayabilirsiniz.
